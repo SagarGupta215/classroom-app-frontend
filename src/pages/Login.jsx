@@ -12,10 +12,11 @@ export const Login = () => {
   const [password, setPassword] = useState("");
   const [role, setRole] = useState('Student');
   const navigate = useNavigate();
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   const handleLogin = async () =>{
     try {
-      const response = await axios.post('http://localhost:3500/api/v1/auth/', {
+      const response = await axios.post(apiUrl+'auth/', {
         username,
         password,
         role

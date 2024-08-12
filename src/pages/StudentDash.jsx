@@ -7,7 +7,7 @@ import ClassroomTable from "../feature/ClassroomTable";
 import { useNavigate } from "react-router-dom";
 
 export const StudentDash = () => {
-  const baseUri = 'http://localhost:3500/api/v1/'
+  const apiUrl = import.meta.env.VITE_API_URL;  
   const [students, setStudents] = useState([]);
   const [classrooms, setClassrooms] = useState([]);
   const [selectedTeacher, setSelectedTeacher] = useState(null);
@@ -22,7 +22,7 @@ export const StudentDash = () => {
 
   const fetchStudents = async () => {
     try {
-      const response = await axios.get(baseUri + 'user?role=Student');
+      const response = await axios.get(apiUrl + 'user?role=Student');
       setStudents(response.data.users);
     } catch (error) {
       console.error('Error fetching students:', error);
@@ -31,7 +31,7 @@ export const StudentDash = () => {
 
   const fetchClassrooms = async () => {
     try {
-      const response = await axios.get(baseUri + 'classroom');
+      const response = await axios.get(apiUrl + 'classroom');
       setClassrooms(response.data.classrooms);
     } catch (error) {
       console.error('Error fetching classrooms:', error);

@@ -12,10 +12,11 @@ export const CreateUser = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("Student");
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   const handleClick =  async ()=>{
     try {
-        const response = await axios.post('http://localhost:3500/api/v1/user/', {
+        const response = await axios.post(apiUrl+'user/', {
           name,
           username,
           password,
