@@ -57,7 +57,7 @@ function App() {
             {/*</Route> */}
 
             <Route path="/dash/*" element={<DashLayout/>} >
-              <Route index element={renderDashboard()} />
+              <Route index element={<PrincipalDash/>} />
               <Route path='createuser' element={<CreateUser/>} />
             </Route>
             
