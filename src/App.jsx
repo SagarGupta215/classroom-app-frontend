@@ -13,10 +13,9 @@ import { CreateUser } from './feature/CreateUser'
 
 
 function App() {
-  // const isAuthenticated = !!localStorage.getItem("jwtToken")
-  const isAuthenticated = true
+  const isAuthenticated = !!localStorage.getItem("jwtToken")
 
-  const [role, setRole] = useState('Student'); 
+  const [role, setRole] = useState(''); 
 
   useEffect(()=>{
     setRole(localStorage.getItem('role'))
@@ -31,7 +30,7 @@ function App() {
       case 'Student':
         return <StudentDash/>;
       default:
-        return <PrincipalDash/>;
+        return <StudentDash/>;
     }
   };
 
@@ -44,7 +43,7 @@ function App() {
             <Route index element={<Login/>} />
             
             {/* Protected Route */}
-            {/* <Route 
+            <Route 
                 path="/dash/*" 
                 element={
                     isAuthenticated ? <DashLayout /> : <Navigate to="/" />
@@ -52,14 +51,14 @@ function App() {
                 >
                 <Route index element={renderDashboard()} />
                 {/* Nested Routes inside Dashboard */}
-    
+                <Route path='createuser' element={<CreateUser/>} />  
               
-            {/*</Route> */}
+            </Route>
 
-            <Route path="/dash/*" element={<DashLayout/>} >
+            {/* <Route path="/dash/*" element={<DashLayout/>} >
               <Route index element={<PrincipalDash/>} />
               <Route path='createuser' element={<CreateUser/>} />
-            </Route>
+            </Route> */}
             
 
 
